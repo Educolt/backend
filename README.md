@@ -1,5 +1,5 @@
 <h1 align="center" style="color: black;">
-    <img src="./assets/logoApi.jpg" style="border-radius: 120px; border: 1px solid #000;
+    <img src="./assets/logo.png" style="border-radius: 120px; border: 1px solid #000;
     box-shadow: 2px 2px 2px 2px " />
 </h1>
 
@@ -93,7 +93,12 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
   # Instalar as dependencias
   $ yarn
 
-  # Inicia o projeto
+  # Instalar Docker Engine & Docker Compose
+
+  # Run docker-compose com sudo
+  $ sudo docker-compose up
+  
+  # ou
   $ yarn dev
 
 ```

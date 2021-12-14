@@ -4,7 +4,7 @@ import { app } from './App';
 // import app sequelize db
 import { db } from './database/db'
 
-app.listen(3333,async  () => {
+app.listen(process.env.APP_PORT,async  () => {
     // sync database
     await db.sync();
 
