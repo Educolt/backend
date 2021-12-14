@@ -73,7 +73,7 @@ Aplicação desenvolvida para solução do Desafio da Vaga Backend Dev Pleno. [N
 O projeto foi desenvolvido utilizando as seguintes tecnologias
 
 - [Node.js](https://nodejs.org/en/)
-- [Front-end](https://github.com/Educolt/newdatamovie)
+- [Front-end](https://github.com/Educolt/frontend)
 - [MySql](https://www.mysql.com/)
 - [Docker](https://www.docker.com/)
 - [Sequelize](https://github.com/sequelize/sequelize)
