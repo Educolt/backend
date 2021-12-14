@@ -36,7 +36,12 @@ userRoutes.post('/', async (request: Request, response: Response) => {
 });
 
 userRoutes.delete('/:id', async (request: Request, response: Response) => {
+
+    // get user id by request.params
     const { id } = request.params;
+
+    // delete user by id
     await userRepositorie.delete(id);
+    
     return response.status(204).json();
 });

@@ -25,7 +25,10 @@ export class UserRepositorie {
         return users;
     }
 
-    async delete(id: String) {
+    async delete(id: string) {
+
+        // destroy user on db by ID
+        await User.destroy({where: {id}})
         return;
     }
 }
