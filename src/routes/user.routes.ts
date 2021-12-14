@@ -4,11 +4,13 @@ import { Router } from 'express';
 // create user service
 import { CreateUserService } from '../services/CreateUserService';
 
+// import user repositorie
 import { UserRepositorie } from '../repositories/UserRepositorie';
 
 // create user router
 export const userRoutes = Router();
 
+// create new instance of UserRepositorie
 const userRepositorie = new UserRepositorie();
 
 // rotas
@@ -18,6 +20,7 @@ userRoutes.get('/', async (request: Request, response: Response) => {
 
     return response.status(200).json(users)
 });
+
 userRoutes.post('/', async (request: Request, response: Response) => {
     
     // destructure request.body
@@ -31,6 +34,9 @@ userRoutes.post('/', async (request: Request, response: Response) => {
 
     return response.status(201).json(user)
 });
-userRoutes.delete('/', async (request: Request, response: Response) => {
-    return response.status(204).json({message: 'Delete user route'});
+
+userRoutes.delete('/:id', async (request: Request, response: Response) => {
+    const { id } = request.params;
+    await userRepositorie.delete(id);
+    return response.status(204).json();
 });
