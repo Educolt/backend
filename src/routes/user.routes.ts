@@ -1,7 +1,8 @@
+// import dependencies
 import { Request, Response } from 'express';
 import { Router } from 'express';
 
-// create user service
+// import create user service
 import { CreateUserService } from '../services/CreateUserService';
 
 // import user repositorie
@@ -13,7 +14,7 @@ export const userRoutes = Router();
 // create new instance of UserRepositorie
 const userRepositorie = new UserRepositorie();
 
-// rotas
+// routes
 userRoutes.get('/', async (request: Request, response: Response) => {
     // get all the users from users repositorie
     const users = await userRepositorie.list();
@@ -37,11 +38,11 @@ userRoutes.post('/', async (request: Request, response: Response) => {
 
 userRoutes.delete('/:id', async (request: Request, response: Response) => {
 
-    // get user id by request.params
+    // get user id in request.params
     const { id } = request.params;
 
     // delete user by id
     await userRepositorie.delete(id);
-    
+
     return response.status(204).json();
 });

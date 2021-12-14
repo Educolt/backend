@@ -1,6 +1,10 @@
+// import dependencies
 import { DataTypes } from 'sequelize'
+
+// import app sequelize db instance
 import { db } from '../database/db';
 
+// defines user model
 export const User = db.define('user', {
     id: {
         type: DataTypes.UUID,
