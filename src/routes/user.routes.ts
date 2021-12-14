@@ -24,25 +24,42 @@ userRoutes.get('/', async (request: Request, response: Response) => {
 
 userRoutes.post('/', async (request: Request, response: Response) => {
     
-    // destructure request.body
-    const { name, email, password, username } = request.body;
+    try {
+        // destructure request.body
+        const { name, email, password, username } = request.body;
 
-    // create const data with request.body 
-    const data = { name, email, password, username };
+        // verify if exist
+        const exist = await userRepositorie.findByEmail(email);
+        if(exist) {
+            throw new Error("E-mail already registered !");
+        }
 
-    // create new user with create user service 
-    const user = await new CreateUserService(userRepositorie).execute(data);
+        // create const data with request.body 
+        const data = { name, email, password, username };
 
-    return response.status(201).json(user)
+        // create new user with create user service 
+        const user = await new CreateUserService(userRepositorie).execute(data);
+
+        return response.status(201).json(user)
+    } catch (error: unknown) {
+        if(error instanceof Error) {
+            return response.status(400).json({ message: error.message })
+        }
+    }
 });
 
 userRoutes.delete('/:id', async (request: Request, response: Response) => {
+    try {
+        // get user id in request.params
+        const { id } = request.params;
 
-    // get user id in request.params
-    const { id } = request.params;
+        // delete user by id
+        await userRepositorie.delete(id);
 
-    // delete user by id
-    await userRepositorie.delete(id);
-
-    return response.status(204).json();
+        return response.status(204).json();
+    } catch (error: unknown) {
+        if(error instanceof Error) {
+            return response.status(400).json({ message: error.message })
+        }
+    }
 });

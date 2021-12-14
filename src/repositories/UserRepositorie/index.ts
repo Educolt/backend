@@ -26,8 +26,21 @@ export class UserRepositorie {
     }
 
     async delete(id: string) {
+        // search for user by Id
+        const user = await User.findOne({where: {id: id}});
+
+        if(!user) {
+            throw new Error("User not found !") 
+        }
+
         // destroy user on db by ID
         await User.destroy({where: {id}})
         return;
+    }
+
+    async findByEmail(email: string) {
+        const user = await User.findOne({where: {email: email}})
+
+        return user;
     }
 }

@@ -1,5 +1,5 @@
 // @types application
-import { ICreateUserRequest } from '../@types';
+import { ICreateUserRequest, IUser } from '../@types';
 
 // import user repositorie
 import { UserRepositorie } from '../repositories/UserRepositorie';
@@ -10,7 +10,6 @@ export class CreateUserService {
     constructor(private userRepositorie: UserRepositorie){}
 
     async execute({ name, username, email, password}: ICreateUserRequest) {
-
         // create a new user on UserRepositorie instance
         const user = await this.userRepositorie.create({
             name,
